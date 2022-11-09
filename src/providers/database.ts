@@ -23,5 +23,15 @@ if (ENV === 'dev'){
     });
 }
 
+else if (ENV === 'test'){
+    db = new Pool({
+      host: "localhost",
+      port: 5416,
+      database: POSTGRES_DB_TEST,
+      user: POSTGRES_USER,
+      password: POSTGRES_PASSWORD,
+    });
+}
+
 
 export default db as Pool;
