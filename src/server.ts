@@ -11,7 +11,7 @@ const upload = multer();
 app.use(bodyParser.json());
 app.use(cors());
 app.use(upload.none());
-app.use(router);
+app.use("/api", router);
 
 app.listen(3000, function () {
   console.log(`starting app on: ${address}`);

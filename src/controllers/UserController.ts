@@ -1,10 +1,10 @@
 import { Request, Response } from "express";
-import ProductModel, { Product } from "../models/ProductModel";
+import UserModel, { User } from "../models/UserModel";
 
-export default class ProductController {
+export default class UserController {
   static async index(_req: Request, res: Response): Promise<void> {
     try {
-      const result = await ProductModel.getProducts();
+      const result = await UserModel.getUsers();
       if (result[0]) {
         res.status(200).json({
           status: 200,
@@ -17,7 +17,7 @@ export default class ProductController {
         res.status(404).json({
           status: 404,
           response: {
-            msg: "No Products Were Found!",
+            msg: "No Users Were Found!",
             data: result,
           },
         });
@@ -35,7 +35,7 @@ export default class ProductController {
   static async show(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id);
-      const result = await ProductModel.getProduct(id);
+      const result = await UserModel.getUser(id);
       if (result) {
         res.status(200).json({
           status: 200,
@@ -48,7 +48,7 @@ export default class ProductController {
         res.status(404).json({
           status: 404,
           response: {
-            msg: "Product Not Found!",
+            msg: "User Not Found!",
             data: result,
           },
         });
@@ -65,17 +65,17 @@ export default class ProductController {
 
   static async create(req: Request, res: Response) {
     try {
-      const { name, price, category } = req.body;
-      const product: Product = {
-        name: name,
-        price: price,
-        category: category,
+      const { firstName, lastName, password } = req.body;
+      const product: User = {
+        firstName: firstName,
+        lastName: lastName,
+        password: password,
       };
-      const result = await ProductModel.insert(product);
+      const result = await UserModel.insert(product);
       res.status(200).json({
         status: 200,
         response: {
-          msg: "Product Inserted",
+          msg: "User Inserted",
           inserted: 1,
           data: result,
         },

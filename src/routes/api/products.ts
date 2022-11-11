@@ -1,12 +1,11 @@
 import express from "express";
 import ProductController from "../../controllers/ProductController";
+import verifyRequest from "../../middleware/verifyRequest";
 
 const products = express.Router();
 
-products.get("/products", ProductController.getProducts);
-products.get("/products/:id", ProductController.getProduct);
-products.post("/products", ProductController.create);
-products.put("/products/:id", ProductController.edit);
-products.delete("/products/:id", ProductController.delete);
+products.get("", ProductController.index);
+products.get("/:id", ProductController.show);
+products.post("", verifyRequest, ProductController.create);
 
 export default products;
