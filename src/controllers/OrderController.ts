@@ -1,11 +1,11 @@
 import { Request, Response } from "express";
-import ProductModel, { Product } from "../models/ProductModel";
+import OrderModel, { Order } from "../models/OrderModel";
 
-export default class ProductController {
+export default class OrderController {
   static async index(_req: Request, res: Response): Promise<void> {
     try {
-      const result = await ProductModel.getProducts();
-      if (result[0]) {
+      const result = await OrderModel.getOrders();
+      if (result.length) {
         res.status(200).json({
           status: 200,
           response: {
@@ -17,7 +17,7 @@ export default class ProductController {
         res.status(404).json({
           status: 404,
           response: {
-            msg: "No Products Were Found!",
+            msg: "No Orders Found!",
             data: result,
           },
         });
@@ -35,7 +35,7 @@ export default class ProductController {
   static async show(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id);
-      const result = await ProductModel.getProduct(id);
+      const result = await OrderModel.getOrder(id);
       if (result) {
         res.status(200).json({
           status: 200,
@@ -48,7 +48,7 @@ export default class ProductController {
         res.status(404).json({
           status: 404,
           response: {
-            msg: "Product Not Found!",
+            msg: "Order Was Not Found!",
             data: result,
           },
         });
@@ -65,13 +65,12 @@ export default class ProductController {
 
   static async create(req: Request, res: Response): Promise<void> {
     try {
-      const { name, price, category } = req.body;
-      const product: Product = {
-        name: name,
-        price: price,
-        category: category,
+      const { user_id, status } = req.body;
+      const order: Order = {
+        user_id: user_id,
+        status: status,
       };
-      const result = await ProductModel.create(product);
+      const result = await OrderModel.create(order);
       res.status(200).json({
         status: 200,
         response: {
@@ -92,20 +91,29 @@ export default class ProductController {
   static async update(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id);
-      const { name, price, category } = req.body;
-      const product: Product = {
-        name: name,
-        price: price,
-        category: category,
+      const { user_id, status } = req.body;
+      const order: Order = {
+        user_id: user_id,
+        status: status,
       };
-      const result = await ProductModel.update(id, product);
-      res.status(200).json({
-        status: 200,
-        response: {
-          msg: "Updated Successfully!",
-          data: result,
-        },
-      });
+      const result = await OrderModel.update(id, order);
+      if (result) {
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Updated Successfully!",
+            data: result,
+          },
+        });
+      } else {
+        res.status(404).json({
+          status: 404,
+          response: {
+            msg: "Order Was Not Found!",
+            data: result,
+          },
+        });
+      }
     } catch (err) {
       res.status(500).json({
         status: 500,
@@ -119,14 +127,55 @@ export default class ProductController {
   static async delete(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id);
-      const result = await ProductModel.delete(id);
-      res.status(200).json({
-        status: 200,
+      const result = await OrderModel.delete(id);
+      if (result) {
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Deleted Successfully!",
+            data: result,
+          },
+        });
+      } else {
+        res.status(404).json({
+          status: 404,
+          response: {
+            msg: "Order Was Not Found!",
+            data: result,
+          },
+        });
+      }
+    } catch (err) {
+      res.status(500).json({
+        status: 500,
         response: {
-          msg: "Deleted Successfully!",
-          data: result,
+          msg: (err as Error).message,
         },
       });
+    }
+  }
+
+  static async getCurrentOrder(req: Request, res: Response): Promise<void> {
+    try {
+      const user_id = parseInt(req.params.user_id);
+      const result = await OrderModel.getCurrentOrder(user_id);
+      if (result) {
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Retrieved Successfully!",
+            data: result,
+          },
+        });
+      } else {
+        res.status(404).json({
+          status: 404,
+          response: {
+            msg: "Order Was Not Found!",
+            data: result,
+          },
+        });
+      }
     } catch (err) {
       res.status(500).json({
         status: 500,

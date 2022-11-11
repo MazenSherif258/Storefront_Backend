@@ -8,22 +8,30 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### Products
 
-- Index Route => '/products' [GET]
-- Show Route => '/products/:id' [GET]
-- Create Route => '/products' [POST] [token required]
-- [OPTIONAL] Top 5 most popular products
-- [OPTIONAL] Products by category (args: product category)
+- Index Route => '/api/products' [GET]
+- Show Route => '/api/products/:id' [GET]
+- Create Route => '/api/products' [POST] [token required]
+- Update Route => '/api/products/:id' [PUT] [token required]
+- Delete Route => '/api/products/:id' [DELETE] [token required]
 
 #### Users
 
-- Index Route => '/users' [GET] [token required]
-- Show Route => '/users/:id' [GET] [token required]
-- Create N Route => '/users' [POST] [token required]
+- Index Route => '/api/users' [GET] [token required]
+- Show Route => '/api/users/:id' [GET] [token required]
+- Create N Route => '/api/users' [POST] [token required]
+- Register Route => '/api/users/register' [POST]
+- Login Route => '/api/users/login' [POST]
+- Delete Route => '/api/users/:id' [DELETE] [token required]
+- Update Route => '/api/users/:id' [PUT] [token required]
 
 #### Orders
 
-- Current Order by user (args: user id)[token required]
-- [OPTIONAL] Completed Orders by user (args: user id)[token required]
+- Index Route => '/api/orders' [GET]
+- Show Route => '/api/orders/:id' [GET]
+- Create Route => '/api/orders' [POST]
+- Update Route => '/api/orders/:id' [PUT]
+- Delete Route => '/api/orders/:id' [DELETE]
+- Current Order by user Route => '/api/orders/currentOrder/:user_id' [GET] [token required]
 
 ## Data Shapes
 
@@ -57,12 +65,12 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 #### User
 
-- users(id:serial, firstName:varchar, lastName:varchar, password:varchar)
+- users(id:serial, firstName:varchar, lastName:varchar, username:varchar, password:varchar)
 
 #### Orders
 
-- id
-- id of each product in the order
-- quantity of each product in the order
-- user_id
-- status of order (active or complete)
+- orders(id:serial, user_id:int[foreign key to users table], status:varchar)
+
+#### Order_Product
+
+- order_product(id:serial, product_id:int[foreign key to products table], quantity:int, order_id:int[foreign key to orders table])
