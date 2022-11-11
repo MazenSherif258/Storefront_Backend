@@ -1,11 +1,10 @@
 import { Request, Response } from "express";
 import ProductModel, { Product } from "../models/ProductModel";
-import db from "../providers/database";
 
 export default class ProductController {
   static async getProducts(_req: Request, res: Response): Promise<void> {
     try {
-      const result = await ProductModel.index();
+      const result = await ProductModel.getProducts();
       if (result[0]) {
         res.status(200).json({
           status: 200,
@@ -36,7 +35,7 @@ export default class ProductController {
   static async getProduct(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id);
-      const result = await ProductModel.show(id);
+      const result = await ProductModel.getProduct(id);
       if (result) {
         res.status(200).json({
           status: 200,
@@ -93,14 +92,14 @@ export default class ProductController {
 
   static async edit(req: Request, res: Response): Promise<void> {
     try {
-      const { id, name, price, category } = req.body;
+      const id = parseInt(req.params.id);
+      const { name, price, category } = req.body;
       const product: Product = {
-        id: id,
         name: name,
         price: price,
         category: category,
       };
-      const result = await ProductModel.update(product);
+      const result = await ProductModel.update(id, product);
       res.status(200).json({
         status: 200,
         response: {

@@ -8,7 +8,7 @@ export type Product = {
 };
 
 export default class ProductModel {
-  static async index(): Promise<Product[]> {
+  static async getProducts(): Promise<Product[]> {
     try {
       const result = await db.query("SELECT * from products");
       return result.rows;
@@ -17,7 +17,7 @@ export default class ProductModel {
     }
   }
 
-  static async show(id: number): Promise<Product> {
+  static async getProduct(id: number): Promise<Product> {
     try {
       const sql = "SELECT * from products WHERE id = $1";
       const result = await db.query(sql, [id]);
@@ -42,7 +42,7 @@ export default class ProductModel {
     }
   }
 
-  static async update(product: Product): Promise<Product> {
+  static async update(id: number, product: Product): Promise<Product> {
     try {
       const sql =
         "UPDATE products set name = $1, price = $2, category = $3 WHERE id = $4 RETURNING *";
@@ -50,7 +50,7 @@ export default class ProductModel {
         product.name,
         product.price,
         product.category,
-        product.id,
+        id,
       ]);
       return result.rows[0];
     } catch (err) {
