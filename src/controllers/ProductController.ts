@@ -63,7 +63,7 @@ export default class ProductController {
     }
   }
 
-  static async create(req: Request, res: Response) {
+  static async create(req: Request, res: Response): Promise<void> {
     try {
       const { name, price, category } = req.body;
       const product: Product = {

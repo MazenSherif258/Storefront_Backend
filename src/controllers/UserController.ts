@@ -63,7 +63,7 @@ export default class UserController {
     }
   }
 
-  static async create(req: Request, res: Response) {
+  static async create(req: Request, res: Response): Promise<void> {
     try {
       const { firstName, lastName, password } = req.body;
       const product: User = {

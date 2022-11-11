@@ -7,7 +7,11 @@ dotenv.config();
 const { TOKEN_SECRET } = process.env;
 
 // Middleware to verify if the incoming request has access to the requested endpoint
-const verifyRequest = (req: Request, res: Response, next: NextFunction) => {
+const verifyRequest = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+): void => {
   const token = req.header("Authorization")?.split(" ")[1];
   if (token) {
     try {
