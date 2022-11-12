@@ -41,7 +41,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Add Product to Order Route => '/api/orders/:id/products' [POST] [token required]
 - Remove Product from Order Route => '/api/orders/:order_id/products/product_id' [DELETE] [token required]
 
-##### Create/Update Parameters Required [status, user_id]
+##### Create/Update Body Parameters Required [status, user_id]
 
 ##### Add Product to Order Body Parameters Required [product_id, quantity]
 
