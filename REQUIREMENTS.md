@@ -14,21 +14,21 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Update Route => '/api/products/:id' [PUT] [token required]
 - Delete Route => '/api/products/:id' [DELETE] [token required]
 
-##### Create/Update Parameters Required [name, price, category]
+##### Create/Update Body Parameters Required [name, price, category]
 
 #### Users
 
 - Index Route => '/api/users' [GET] [token required]
 - Show Route => '/api/users/:id' [GET] [token required]
 - Create N Route => '/api/users' [POST] [token required]
-- Register Route => '/api/users/register' [POST]
-- Login Route => '/api/users/login' [POST]
+- Register Route => '/api/users/register' [POST] [sends jwt token]
+- Login Route => '/api/users/login' [POST] [sends jwt token]
 - Delete Route => '/api/users/:id' [DELETE] [token required]
 - Update Route => '/api/users/:id' [PUT] [token required]
 
-##### Create Parameters Required [ firstName/firstName[], lastName/lastName[], username/username[], password/password[] ]
+##### Create Body Parameters Required [ firstName/firstName[], lastName/lastName[], username/username[], password/password[] ]
 
-##### Update Parameters Required [ firstName, lastName, username, password ]
+##### Update Body Parameters Required [ firstName, lastName, username, password ]
 
 #### Orders
 
@@ -38,6 +38,12 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Update Route => '/api/orders/:id' [PUT]
 - Delete Route => '/api/orders/:id' [DELETE]
 - Current Order by user Route => '/api/orders/currentOrder/:user_id' [GET] [token required]
+- Add Product to Order Route => '/api/orders/:id/products' [POST] [token required]
+- Remove Product from Order Route => '/api/orders/:order_id/products/product_id' [DELETE] [token required]
+
+##### Create/Update Parameters Required [status, user_id]
+
+##### Add Product to Order Body Parameters Required [product_id, quantity]
 
 ## Data Shapes
 
@@ -63,7 +69,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - user_id
 - status of order (active or complete)
 
-## Database
+## Database Scheme
 
 #### Product
 

@@ -72,7 +72,6 @@ export default class UserController {
   static async create(req: Request, res: Response): Promise<void> {
     try {
       const { firstName, lastName, username, password } = req.body;
-      console.log(req.body);
       if (Array.isArray(firstName)) {
         let users: User[] = [];
         for (let i = 0; i < firstName.length; i++) {
