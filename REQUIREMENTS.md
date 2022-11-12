@@ -14,7 +14,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Update Route => '/api/products/:id' `[PUT]` `[token required]`
 - Delete Route => '/api/products/:id' `[DELETE]` `[token required]`
 
-Create/Update Body Parameters Required [name, price, category]
+##### Create/Update Body Parameters Required [name, price, category]
 
 #### Users
 
