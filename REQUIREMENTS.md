@@ -10,21 +10,21 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 - Index Route => '/api/products' `[GET]`
 - Show Route => '/api/products/:id' `[GET]`
-- Create Route => '/api/products' `[POST]` [token required]
-- Update Route => '/api/products/:id' `[PUT]` [token required]
-- Delete Route => '/api/products/:id' `[DELETE]` [token required]
+- Create Route => '/api/products' `[POST]` `[token required]`
+- Update Route => '/api/products/:id' `[PUT]` `[token required]`
+- Delete Route => '/api/products/:id' `[DELETE]` `[token required]`
 
 ##### Create/Update Body Parameters Required [name, price, category]
 
 #### Users
 
-- Index Route => '/api/users' `[GET]` [token required]
-- Show Route => '/api/users/:id' `[GET]` [token required]
-- Create N Route => '/api/users' `[POST]` [token required]
+- Index Route => '/api/users' `[GET]` `[token required]`
+- Show Route => '/api/users/:id' `[GET]` `[token required]`
+- Create N Route => '/api/users' `[POST]` `[token required]`
 - Register Route => '/api/users/register' `[POST]` [sends jwt token]
 - Login Route => '/api/users/login' `[POST]` [sends jwt token]
-- Delete Route => '/api/users/:id' `[DELETE]` [token required]
-- Update Route => '/api/users/:id' `[PUT]` [token required]
+- Delete Route => '/api/users/:id' `[DELETE]` `[token required]`
+- Update Route => '/api/users/:id' `[PUT]` `[token required]`
 
 ##### Create Body Parameters Required [ firstName/firstName[], lastName/lastName[], username/username[], password/password[] ]
 
@@ -37,8 +37,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Create Route => '/api/orders' `[POST]`
 - Update Route => '/api/orders/:id' `[PUT]`
 - Delete Route => '/api/orders/:id' `[DELETE]`
-- Current Order by user Route => '/api/orders/currentOrder/:user_id' `[GET]` [token required]
-- Add Product to Order Route => '/api/orders/:id/products' `[POST]` [token required]
+- Current Order by user Route => '/api/orders/currentOrder/:user_id' `[GET]` `[token required]`
+- Add Product to Order Route => '/api/orders/:id/products' `[POST]` `[token required]`
 - Remove Product from Order Route => '/api/orders/:order_id/products/product_id' `[DELETE]` `[token required]`
 
 ##### Create/Update Body Parameters Required [status, user_id]
