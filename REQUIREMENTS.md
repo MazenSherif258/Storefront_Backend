@@ -21,8 +21,8 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Index Route => '/api/users' `[GET]` `[token required]`
 - Show Route => '/api/users/:id' `[GET]` `[token required]`
 - Create N Route => '/api/users' `[POST]` `[token required]`
-- Register Route => '/api/users/register' `[POST]` [sends jwt token]
-- Login Route => '/api/users/login' `[POST]` [sends jwt token]
+- Register Route => '/api/users/register' `[POST]` `[sends jwt token]`
+- Login Route => '/api/users/login' `[POST]` `[sends jwt token]`
 - Delete Route => '/api/users/:id' `[DELETE]` `[token required]`
 - Update Route => '/api/users/:id' `[PUT]` `[token required]`
 
