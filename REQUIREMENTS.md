@@ -39,7 +39,7 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Delete Route => '/api/orders/:id' `[DELETE]`
 - Current Order by user Route => '/api/orders/currentOrder/:user_id' `[GET]` [token required]
 - Add Product to Order Route => '/api/orders/:id/products' `[POST]` [token required]
-- Remove Product from Order Route => '/api/orders/:order_id/products/product_id' `[DELETE]` [token required]
+- Remove Product from Order Route => '/api/orders/:order_id/products/product_id' `[DELETE]` `[token required]`
 
 ##### Create/Update Body Parameters Required [status, user_id]
 
