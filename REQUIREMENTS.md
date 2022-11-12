@@ -14,15 +14,18 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Update Route => '/api/products/:id' [PUT] [token required]
 - Delete Route => '/api/products/:id' [DELETE] [token required]
 
+##### Create/Update Parameters Required [name, price, category]
+
 #### Users
 
 - Index Route => '/api/users' [GET] [token required]
 - Show Route => '/api/users/:id' [GET] [token required]
-- Create N Route => '/api/users' [POST] [token required]
+- Create Route => '/api/users' [POST] [token required]
 - Register Route => '/api/users/register' [POST]
 - Login Route => '/api/users/login' [POST]
 - Delete Route => '/api/users/:id' [DELETE] [token required]
 - Update Route => '/api/users/:id' [PUT] [token required]
+- Create N Route => '/api/users/createN' [POST] [token required]
 
 #### Orders
 

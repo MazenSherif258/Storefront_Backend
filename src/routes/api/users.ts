@@ -4,10 +4,13 @@ import verifyRequest from "../../middleware/verifyRequest";
 
 const users = express.Router();
 
-users.use(verifyRequest);
-
-users.get("", UserController.index);
-users.get("/:id", UserController.show);
-users.post("", UserController.create);
+users.get("", verifyRequest, UserController.index);
+users.get("/:id", verifyRequest, UserController.show);
+users.post("", verifyRequest, UserController.create);
+users.put("/:id", verifyRequest, UserController.update);
+users.delete("/:id", verifyRequest, UserController.delete);
+users.post("/auth/register", UserController.register);
+users.post("/auth/login", UserController.login);
+users.post("/createN", verifyRequest, UserController.createN);
 
 export default users;

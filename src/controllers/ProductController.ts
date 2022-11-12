@@ -14,8 +14,8 @@ export default class ProductController {
           },
         });
       } else {
-        res.status(404).json({
-          status: 404,
+        res.status(200).json({
+          status: 200,
           response: {
             msg: "No Products Were Found!",
             data: result,
@@ -45,8 +45,8 @@ export default class ProductController {
           },
         });
       } else {
-        res.status(404).json({
-          status: 404,
+        res.status(200).json({
+          status: 200,
           response: {
             msg: "Product Not Found!",
             data: result,
@@ -99,13 +99,23 @@ export default class ProductController {
         category: category,
       };
       const result = await ProductModel.update(id, product);
-      res.status(200).json({
-        status: 200,
-        response: {
-          msg: "Updated Successfully!",
-          data: result,
-        },
-      });
+      if (result) {
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Updated Successfully!",
+            data: result,
+          },
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Product Not Found!",
+            data: result,
+          },
+        });
+      }
     } catch (err) {
       res.status(500).json({
         status: 500,
@@ -120,13 +130,23 @@ export default class ProductController {
     try {
       const id = parseInt(req.params.id);
       const result = await ProductModel.delete(id);
-      res.status(200).json({
-        status: 200,
-        response: {
-          msg: "Deleted Successfully!",
-          data: result,
-        },
-      });
+      if (result) {
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Deleted Successfully!",
+            data: result,
+          },
+        });
+      } else {
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Product Not Found!",
+            data: result,
+          },
+        });
+      }
     } catch (err) {
       res.status(500).json({
         status: 500,

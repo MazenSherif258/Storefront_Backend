@@ -14,8 +14,8 @@ export default class OrderController {
           },
         });
       } else {
-        res.status(404).json({
-          status: 404,
+        res.status(200).json({
+          status: 200,
           response: {
             msg: "No Orders Found!",
             data: result,
@@ -45,8 +45,8 @@ export default class OrderController {
           },
         });
       } else {
-        res.status(404).json({
-          status: 404,
+        res.status(200).json({
+          status: 200,
           response: {
             msg: "Order Was Not Found!",
             data: result,
@@ -106,8 +106,8 @@ export default class OrderController {
           },
         });
       } else {
-        res.status(404).json({
-          status: 404,
+        res.status(200).json({
+          status: 200,
           response: {
             msg: "Order Was Not Found!",
             data: result,
@@ -137,8 +137,8 @@ export default class OrderController {
           },
         });
       } else {
-        res.status(404).json({
-          status: 404,
+        res.status(200).json({
+          status: 200,
           response: {
             msg: "Order Was Not Found!",
             data: result,
@@ -168,8 +168,8 @@ export default class OrderController {
           },
         });
       } else {
-        res.status(404).json({
-          status: 404,
+        res.status(200).json({
+          status: 200,
           response: {
             msg: "Order Was Not Found!",
             data: result,
