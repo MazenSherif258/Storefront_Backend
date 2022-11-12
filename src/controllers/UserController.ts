@@ -72,20 +72,42 @@ export default class UserController {
   static async create(req: Request, res: Response): Promise<void> {
     try {
       const { firstName, lastName, username, password } = req.body;
-      const user: User = {
-        firstName: firstName,
-        lastName: lastName,
-        username: username,
-        password: password,
-      };
-      const result = await UserModel.insert(user);
-      res.status(200).json({
-        status: 200,
-        response: {
-          msg: "Created Successfully!",
-          data: result,
-        },
-      });
+      console.log(req.body);
+      if (Array.isArray(firstName)) {
+        let users: User[] = [];
+        for (let i = 0; i < firstName.length; i++) {
+          const user: User = {
+            firstName: firstName[i],
+            lastName: lastName[i],
+            username: username[i],
+            password: password[i],
+          };
+          const result = await UserModel.insert(user);
+          users.push(result);
+        }
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Created Successfully!",
+            data: users,
+          },
+        });
+      } else {
+        const user: User = {
+          firstName: firstName,
+          lastName: lastName,
+          username: username,
+          password: password,
+        };
+        const result = await UserModel.insert(user);
+        res.status(200).json({
+          status: 200,
+          response: {
+            msg: "Created Successfully!",
+            data: result,
+          },
+        });
+      }
     } catch (err) {
       res.status(500).json({
         status: 500,
@@ -230,34 +252,6 @@ export default class UserController {
             user: result,
             token: token,
           },
-        },
-      });
-    } catch (err) {
-      res.status(500).json({
-        status: 500,
-        response: {
-          msg: (err as Error).message,
-        },
-      });
-    }
-  }
-
-  static async createN(req: Request, res: Response): Promise<void> {
-    try {
-      const { firstName, lastName, username, password } = req.body;
-      for (let i = 0; i < firstName.length; i++) {
-        const user: User = {
-          firstName: firstName[i],
-          lastName: lastName[i],
-          username: username[i],
-          password: password[i],
-        };
-        await UserModel.insert(user);
-      }
-      res.status(200).json({
-        status: 200,
-        response: {
-          msg: "Created Successfully!",
         },
       });
     } catch (err) {

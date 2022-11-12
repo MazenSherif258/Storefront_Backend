@@ -27,6 +27,10 @@ These are the notes from a meeting with the frontend developer that describe wha
 - Update Route => '/api/users/:id' [PUT] [token required]
 - Create N Route => '/api/users/createN' [POST] [token required]
 
+##### Create Parameters Required [ firstName/firstName[], lastName/lastName[], username/username[], password/password[] ]
+
+##### Update Parameters Required [ firstName, lastName, username, password ]
+
 #### Orders
 
 - Index Route => '/api/orders' [GET]
