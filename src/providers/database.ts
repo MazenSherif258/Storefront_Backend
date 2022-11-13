@@ -27,7 +27,7 @@ if (ENV === "dev") {
   db = new Pool({
     host: POSTGRES_HOST,
     port: parseInt(POSTGRES_PORT as string) || 5416,
-    database: POSTGRES_DB_TEST,
+    database: "testDB",
     user: POSTGRES_USER,
     password: POSTGRES_PASSWORD,
   });

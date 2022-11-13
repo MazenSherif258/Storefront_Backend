@@ -8,8 +8,8 @@ const { BCRYPT_PASSWORD, SALT_ROUNDS } = process.env;
 
 export type User = {
   id?: number;
-  firstName: string;
-  lastName: number;
+  firstname: string;
+  lastname: string;
   username: string;
   password: string;
 };
@@ -44,8 +44,8 @@ export default class UserModel {
         parseInt(SALT_ROUNDS as string)
       );
       const result = await db.query(sql, [
-        user.firstName,
-        user.lastName,
+        user.firstname,
+        user.lastname,
         user.username,
         hashedPass,
       ]);
@@ -64,8 +64,8 @@ export default class UserModel {
         parseInt(SALT_ROUNDS as string)
       );
       const result = await db.query(sql, [
-        user.firstName,
-        user.lastName,
+        user.firstname,
+        user.lastname,
         user.username,
         hashedPass,
         id,

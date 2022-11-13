@@ -6,11 +6,13 @@
   "scripts": {
     "start": "node src/server.ts",
     "watch": "tsc-watch --esModuleInterop src/server.ts --outDir ./dist --onSuccess \"node ./dist/server.js\"",
-    "test": "jasmine-ts",
     "tsc": "tsc",
     "db:up": "npx db-migrate up",
     "db:down": "npx db-migrate down",
-    "db:reset": "npx db-migrate reset"
+    "db:reset": "npx db-migrate reset",
+    "build": "npx tsc",
+    "testDB": "npx db-migrate db:create testDB && npx db-migrate up --env test",
+    "test": "npm run testDB && set ENV=test&& npm run build && jasmine && npx db-migrate db:drop testDB"
   },
   "repository": {
     "type": "git",
@@ -40,7 +42,7 @@
     "@types/multer": "^1.4.7",
     "@types/pg": "^7.14.7",
     "jasmine": "^3.6.4",
-    "jasmine-spec-reporter": "^6.0.0",
+    "jasmine-spec-reporter": "^7.0.0",
     "jasmine-ts": "^0.3.0",
     "ts-node": "^9.1.1",
     "tsc-watch": "^4.2.9"

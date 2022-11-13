@@ -76,8 +76,8 @@ export default class UserController {
         let users: User[] = [];
         for (let i = 0; i < firstName.length; i++) {
           const user: User = {
-            firstName: firstName[i],
-            lastName: lastName[i],
+            firstname: firstName[i],
+            lastname: lastName[i],
             username: username[i],
             password: password[i],
           };
@@ -93,8 +93,8 @@ export default class UserController {
         });
       } else {
         const user: User = {
-          firstName: firstName,
-          lastName: lastName,
+          firstname: firstName,
+          lastname: lastName,
           username: username,
           password: password,
         };
@@ -122,8 +122,8 @@ export default class UserController {
       const id = parseInt(req.params.id);
       const { firstName, lastName, username, password } = req.body;
       const user: User = {
-        firstName: firstName,
-        lastName: lastName,
+        firstname: firstName,
+        lastname: lastName,
         username: username,
         password: password,
       };
@@ -230,14 +230,14 @@ export default class UserController {
     try {
       const { firstName, lastName, username, password } = req.body;
       const user: User = {
-        firstName: firstName,
-        lastName: lastName,
+        firstname: firstName,
+        lastname: lastName,
         username: username,
         password: password,
       };
       const result = await UserModel.insert(user);
       const token = jwt.sign(
-        { name: user.firstName, username: result.username },
+        { name: user.firstname, username: result.username },
         TOKEN_SECRET as string,
         {
           expiresIn: "24h",
