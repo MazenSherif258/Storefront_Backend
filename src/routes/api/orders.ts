@@ -9,8 +9,16 @@ orders.get("/:id", OrderController.show);
 orders.post("", verifyRequest, OrderController.create);
 orders.put("/:id", verifyRequest, OrderController.update);
 orders.delete("/:id", verifyRequest, OrderController.delete);
-orders.get("/currentOrder/:user_id", OrderController.getCurrentOrder);
-orders.post("/:id/products", OrderController.addProduct);
-orders.delete("/:order_id/products/:product_id", OrderController.removeProduct);
+orders.get(
+  "/currentOrder/:user_id",
+  verifyRequest,
+  OrderController.getCurrentOrder
+);
+orders.post("/:id/products", verifyRequest, OrderController.addProduct);
+orders.delete(
+  "/:order_id/products/:product_id",
+  verifyRequest,
+  OrderController.removeProduct
+);
 
 export default orders;

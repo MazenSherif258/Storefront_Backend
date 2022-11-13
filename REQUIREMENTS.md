@@ -34,9 +34,9 @@ These are the notes from a meeting with the frontend developer that describe wha
 
 - Index Route => '/api/orders' `[GET]`
 - Show Route => '/api/orders/:id' `[GET]`
-- Create Route => '/api/orders' `[POST]`
-- Update Route => '/api/orders/:id' `[PUT]`
-- Delete Route => '/api/orders/:id' `[DELETE]`
+- Create Route => '/api/orders' `[POST]` `[token required]`
+- Update Route => '/api/orders/:id' `[PUT]` `[token required]`
+- Delete Route => '/api/orders/:id' `[DELETE]` `[token required]`
 - Current Order by user Route => '/api/orders/currentOrder/:user_id' `[GET]` `[token required]`
 - Add Product to Order Route => '/api/orders/:id/products' `[POST]` `[token required]`
 - Remove Product from Order Route => '/api/orders/:order_id/products/product_id' `[DELETE]` `[token required]`
