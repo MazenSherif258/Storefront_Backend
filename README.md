@@ -7,7 +7,7 @@
 - `docker exec -it storefront_backend bash`
 - `su postgres`
 - `psql postgres`
-- `\c <storefront>`
+- `\c storefront`
 - database running on port 5416 mapped to 5432 in the docker container
 
 ## 2. Enivroment Variables
