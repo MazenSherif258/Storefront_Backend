@@ -15,13 +15,13 @@
 
 - ### Database
 
-  POSTGRES_HOST=localhost
-  POSTGRES_DB=storefront
-  POSTGRES_USER=postgres
-  POSTGRES_PASSWORD=root
-  POSTGRES_PORT=5416
-  ENV=dev
-  BACKEND_PORT=3000
+  POSTGRES_HOST=localhost<br>
+  POSTGRES_DB=storefront<br>
+  POSTGRES_USER=postgres<br>
+  POSTGRES_PASSWORD=root<br>
+  POSTGRES_PORT=5416<br>
+  ENV=dev<br>
+  BACKEND_PORT=3000<br>
 
 - ### Bcrypt
 
