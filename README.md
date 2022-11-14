@@ -23,7 +23,7 @@
 
 - ### Bcrypt
 
-  BCRYPT_PASSWORD=mazensecretkey
+  BCRYPT_PASSWORD=mazensecretkey<br>
   SALT_ROUNDS=10
 
 - ### JWT
