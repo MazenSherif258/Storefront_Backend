@@ -69,6 +69,13 @@ These are the notes from a meeting with the frontend developer that describe wha
 - user_id
 - status of order (active or complete)
 
+#### Order_Product
+
+- id
+- product_id of the product in the order
+- quantity of the product in the order
+- order_id
+
 ## Database Scheme
 
 #### Product

@@ -1,6 +1,6 @@
 # Storefront Backend Project
 
-## 1. Database Connection
+## 1. Database Connection and Backend
 
 - install docker-compose.yml file
 - type `docker run storefront_backend` to run the container
@@ -9,6 +9,7 @@
 - `psql postgres`
 - `\c <storefront>`
 - database running on port 5416 mapped to 5432 in the docker container
+- Backend is running on port 3000 by default, you can change it by changing its ENV variable
 
 ## 2. Enivroment Variables
 
@@ -20,6 +21,7 @@
   POSTGRES_PASSWORD=root
   POSTGRES_PORT=5416
   ENV=dev
+  BACKEND_PORT=3000
 
 - ### Bcrypt
 
