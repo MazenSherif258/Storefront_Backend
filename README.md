@@ -37,6 +37,7 @@
 - `npm run build` to compile ts to js
 - `npm run test` to prepare testing enviroment and run tests
 
-## 4. Package initialization
+## 4. Project initialization
 
 #### Type `npm install` to install all packages
+#### Type `npm run start` to start the server
