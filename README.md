@@ -7,7 +7,7 @@
 - `docker exec -it storefront_backend bash`
 - `su postgres`
 - `psql postgres`
-- `\c <storefront>`
+- `\c storefront`
 - database running on port 5416 mapped to 5432 in the docker container
 - Backend is running on port 3000 by default, you can change it by changing its ENV variable
 
@@ -25,7 +25,7 @@
 
 - ### Bcrypt
 
-  BCRYPT_PASSWORD=mazensecretkey
+  BCRYPT_PASSWORD=mazensecretkey<br>
   SALT_ROUNDS=10
 
 - ### JWT
@@ -39,6 +39,8 @@
 - `npm run build` to compile ts to js
 - `npm run test` to prepare testing enviroment and run tests
 
-## 4. Package initialization
+## 4. Project initialization
 
 #### Type `npm install` to install all packages
+
+#### Type `npm run start` or `npm run watch` to start the server
