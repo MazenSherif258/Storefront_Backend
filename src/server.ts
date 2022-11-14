@@ -5,6 +5,8 @@ import multer from "multer";
 import cors from "cors";
 import dotenv from "dotenv";
 
+dotenv.config();
+
 const { BACKEND_PORT } = process.env;
 const port = BACKEND_PORT || 3000;
 
