@@ -40,4 +40,4 @@
 ## 4. Project initialization
 
 #### Type `npm install` to install all packages
-#### Type `npm run start` to start the server
+#### Type `npm run start` or `npm run watch` to start the server
