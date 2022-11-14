@@ -30,11 +30,12 @@ const createProductTest = async () => {
   product.id = result.id;
 };
 
-// Create User and Product for Order Model Testing
-createUserTest();
-createProductTest();
-
 describe("Order Model Tests", () => {
+  beforeAll(() => {
+    // Create User and Product for Order Model Testing
+    createUserTest();
+    createProductTest();
+  });
   it("Should Create an Order", async () => {
     const result = await OrderModel.create(order);
     expect(result.status).toEqual(order.status);

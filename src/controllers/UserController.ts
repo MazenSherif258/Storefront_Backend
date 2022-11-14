@@ -2,6 +2,7 @@ import { Request, Response } from "express";
 import UserModel, { User } from "../models/UserModel";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
+import generateJWT from "../utils/jwtGenerator";
 
 dotenv.config();
 
@@ -71,13 +72,13 @@ export default class UserController {
 
   static async create(req: Request, res: Response): Promise<void> {
     try {
-      const { firstName, lastName, username, password } = req.body;
-      if (Array.isArray(firstName)) {
+      const { firstname, lastname, username, password } = req.body;
+      if (Array.isArray(firstname)) {
         let users: User[] = [];
-        for (let i = 0; i < firstName.length; i++) {
+        for (let i = 0; i < firstname.length; i++) {
           const user: User = {
-            firstname: firstName[i],
-            lastname: lastName[i],
+            firstname: firstname[i],
+            lastname: lastname[i],
             username: username[i],
             password: password[i],
           };
@@ -93,8 +94,8 @@ export default class UserController {
         });
       } else {
         const user: User = {
-          firstname: firstName,
-          lastname: lastName,
+          firstname: firstname,
+          lastname: lastname,
           username: username,
           password: password,
         };
@@ -120,10 +121,10 @@ export default class UserController {
   static async update(req: Request, res: Response): Promise<void> {
     try {
       const id = parseInt(req.params.id);
-      const { firstName, lastName, username, password } = req.body;
+      const { firstname, lastname, username, password } = req.body;
       const user: User = {
-        firstname: firstName,
-        lastname: lastName,
+        firstname: firstname,
+        lastname: lastname,
         username: username,
         password: password,
       };
@@ -191,19 +192,13 @@ export default class UserController {
       const { username, password } = req.body;
       const result = await UserModel.authenticate(username, password);
       if (result) {
-        const token = jwt.sign(
-          { username: result.username },
-          TOKEN_SECRET as string,
-          {
-            expiresIn: "24h",
-          }
-        );
+        const token = generateJWT(result.username);
         res.status(200).json({
           status: 200,
           response: {
             msg: "Login Success!",
             data: {
-              admin: result,
+              user: result,
               token: token,
             },
           },
@@ -228,21 +223,15 @@ export default class UserController {
 
   static async register(req: Request, res: Response): Promise<void> {
     try {
-      const { firstName, lastName, username, password } = req.body;
+      const { firstname, lastname, username, password } = req.body;
       const user: User = {
-        firstname: firstName,
-        lastname: lastName,
+        firstname: firstname,
+        lastname: lastname,
         username: username,
         password: password,
       };
       const result = await UserModel.insert(user);
-      const token = jwt.sign(
-        { name: user.firstname, username: result.username },
-        TOKEN_SECRET as string,
-        {
-          expiresIn: "24h",
-        }
-      );
+      const token = generateJWT(result.username);
       res.status(200).json({
         status: 200,
         response: {

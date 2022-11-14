@@ -38,7 +38,7 @@ export default class UserModel {
   static async insert(user: User): Promise<User> {
     try {
       const sql =
-        "INSERT INTO users(firstName, lastName, username, password) VALUES($1, $2, $3, $4) RETURNING *";
+        "INSERT INTO users(firstname, lastname, username, password) VALUES($1, $2, $3, $4) RETURNING *";
       const hashedPass = bcrypt.hashSync(
         user.password + BCRYPT_PASSWORD,
         parseInt(SALT_ROUNDS as string)
